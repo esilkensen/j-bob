@@ -1,3 +1,5 @@
+#lang dracula
+
 ;; Load the J-Bob language:
 (include-book "j-bob-lang" :dir :teachpacks)
 
@@ -19,7 +21,7 @@
      ((Q A) (if-true a b))
      ((Q A) (equal-if a 't)))))
 (chapter2.example1)
-;; ==> (if (if (equal a 't) 't (equal 'or '(black coffee))) c c)
+;; ==> '(if (if (equal a 't) 't (equal 'or '(black coffee))) c c)
 
 (defun chapter2.example2 ()
   (J-Bob/step
@@ -34,13 +36,13 @@
    '(((E A 2) (cons/car+cdr (car a)))
      ((E A 2 2) (equal-if (cdr (car a)) '(hash browns))))))
 (chapter2.example2)
-;; ==> (if (atom (car a))
-;;         (if (equal (car a) (cdr a))
-;;             'hominy
-;;             'grits)
-;;         (if (equal (cdr (car a)) '(hash browns))
-;;             (cons 'ketchup (cons (car (car a)) '(hash browns)))
-;;             (cons 'mustard (car a))))
+;; ==> '(if (atom (car a))
+;;          (if (equal (car a) (cdr a))
+;;              'hominy
+;;              'grits)
+;;          (if (equal (cdr (car a)) '(hash browns))
+;;              (cons 'ketchup (cons (car (car a)) '(hash browns)))
+;;              (cons 'mustard (car a))))
 
 (defun chapter2.example3 ()
   (J-Bob/step
@@ -74,7 +76,7 @@
                          (cons n '(other answer))
                          (cons n '(other else)))))))
 (chapter2.example3)
-;; ==> (cons 'statement
-;;           (if (equal a 'question)
-;;               (cons (cons n '(answer)) (cons n '(other answer)))
-;;               (cons (cons n '(else)) (cons n '(other else)))))
+;; ==> '(cons 'statement
+;;            (if (equal a 'question),
+;;                (cons (cons n '(answer)) (cons n '(other answer)))
+;;                (cons (cons n '(else)) (cons n '(other else)))))

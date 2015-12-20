@@ -1,3 +1,5 @@
+#lang dracula
+
 ;; Load the J-Bob language:
 (include-book "j-bob-lang" :dir :teachpacks)
 
@@ -11,7 +13,7 @@
    '(((1) (cons 'ham '(eggs)))
      (() (car '(ham eggs))))))
 (chapter1.example1)
-;; ==> 'ham
+;; ==> ''ham
 
 (defun chapter1.example2 ()
   (J-Bob/step
@@ -19,7 +21,7 @@
    '(atom '())
    '((() (atom '())))))
 (chapter1.example2)
-;; ==> 't
+;; ==> ''t
 
 (defun chapter1.example3 ()
   (J-Bob/step
@@ -28,7 +30,7 @@
    '(((1) (cons 'ham '(eggs)))
      (() (atom '(ham eggs))))))
 (chapter1.example3)
-;; ==> 'nil
+;; ==> ''nil
 
 (defun chapter1.example4 ()
   (J-Bob/step
@@ -36,7 +38,7 @@
    '(atom (cons a b))
    '((() (atom/cons a b)))))
 (chapter1.example4)
-;; ==> 'nil
+;; ==> ''nil
 
 (defun chapter1.example5 ()
   (J-Bob/step
@@ -45,7 +47,7 @@
    '(((2) (atom/cons a b))
      (() (equal 'flapjack 'nil)))))
 (chapter1.example5)
-;; ==> 'nil
+;; ==> ''nil
 
 (defun chapter1.example6 ()
   (J-Bob/step
@@ -55,7 +57,7 @@
      ((1) (cdr/cons p '()))
      (() (atom '())))))
 (chapter1.example6)
-;; ==> 't
+;; ==> ''t
 
 (defun chapter1.example7 ()
   (J-Bob/step
@@ -64,7 +66,7 @@
    '(((1) (cdr/cons (car (cons p q)) '()))
      (() (atom '())))))
 (chapter1.example7)
-;; ==> 't
+;; ==> ''t
 
 (defun chapter1.example8 ()
   (J-Bob/step
@@ -75,7 +77,7 @@
      ((1) (cons 't '(and crumpets)))
      (() (car '(t and crumpets))))))
 (chapter1.example8)
-;; ==> 't
+;; ==> ''t
 
 (defun chapter1.example9 ()
   (J-Bob/step
@@ -83,7 +85,7 @@
    '(equal (cons x y) (cons 'bagels '(and lox)))
    '((() (equal-swap (cons x y) (cons 'bagels '(and lox)))))))
 (chapter1.example9)
-;; ==> (equal (cons 'bagels '(and lox)) (cons x y))
+;; ==> '(equal (cons 'bagels '(and lox)) (cons x y))
 
 (defun chapter1.example10 ()
   (J-Bob/step
@@ -92,7 +94,7 @@
                    (equal (atom x) 'nil)))
    '(((2 1) (car/cons (cdr x) (car y))))))
 (chapter1.example10)
-;; ==> (cons y (equal (cdr x) (equal (atom x) 'nil)))
+;; ==> '(cons y (equal (cdr x) (equal (atom x) 'nil)))
 
 (defun chapter1.example11 ()
   (J-Bob/step
@@ -103,10 +105,10 @@
      ((2 2 2 1 1 1) (cdr/cons a b))
      ((2 2 2 1 2) (equal-swap (cons a b) c)))))
 (chapter1.example11)
-;; ==> (cons y
-;;           (equal (car (cons (car (cons (cdr x) (car y))) '(oats)))
-;;                  (equal (atom x) (atom (cons (atom b)
-;;                                              (equal c (cons a b)))))))
+;; ==> '(cons y
+;;            (equal (car (cons (car (cons (cdr x) (car y))) '(oats)))
+;;                   (equal (atom x) (atom (cons (atom b)
+;;                                               (equal c (cons a b)))))))
 
 (defun chapter1.example12 ()
   (J-Bob/step
@@ -114,4 +116,4 @@
    '(atom (car (cons (car a) (cdr b))))
    '(((1) (car/cons (car a) (cdr b))))))
 (chapter1.example12)
-;; ==> (atom (car a))
+;; ==> '(atom (car a))
